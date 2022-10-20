@@ -1,0 +1,244 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\ReportTemplate\NewCaseReport.xlsx" />
+    <None Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BarcodeLib.Core" Version="1.0.9" />
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="DocXCore" Version="1.0.9" />
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.28" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.28" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.28" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.28">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.28" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="3.2.7" />
+    <PackageReference Include="SkiaSharp.Linux" Version="1.59.3" />
+    <PackageReference Include="Syncfusion.DocIO.Net.Core" Version="18.2.0.56" />
+    <PackageReference Include="Syncfusion.DocIORenderer.Net.Core" Version="18.2.0.56" />
+    <PackageReference Include="Syncfusion.Pdf.Net.Core" Version="18.2.0.56" />
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <PackageReference Include="System.IO.Packaging" Version="4.7.0" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TldcFare.Dal\TldcFare.Dal.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\ReportTemplate\NewCaseReport.xlsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PayAnnounce.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PaySlipAnnoun.docx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\SevOrgReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\RipAchReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\FareDetailReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\RipDetailReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\DailyNewCaseReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\Payslip.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\RipSecondAmtReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MemPayReportByGroup.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\NewCaseReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PayAnnounce.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\SevReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MemReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\DailyIncomeReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\ExportImportPayRecord.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\ActFeeReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PaySlipAnnoun.docx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MemMonthlyPaymentReportByMethod.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PayPatch.docx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\RipAnnounces.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\CashReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\台新繳款匯入.txt">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\ServiceFeeReportBranch.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\RipReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MonthlyNewCaseReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MemPaymentReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\BankInfo.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\MemOverduePaymentReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\ZipCode.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\FareFundAchReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\PayFeeReportBranch.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\SevOrgReport.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\ReportTemplate\Announces.xlsx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Remove="obj\**" />
+    <Content Update="wwwroot\ReportTemplate\RipAnnounce.docx">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\.DS_Store" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\ActFeeReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\Announces.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\BankInfo.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\CashReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\DailyIncomeReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\DailyNewCaseReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\ExportImportPayRecord.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\FareDetailReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\FareFundAchReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MemMonthlyPaymentReportByMethod.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MemOverduePaymentReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MemPaymentReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MemPayReportByGroup.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MemReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\MonthlyNewCaseReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\NewCaseReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\PayAnnounce.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\PayFeeReportBranch.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\PayPatch.docx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\Payslip.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\PaySlipAnnoun.docx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\RipAchReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\RipAnnounces.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\RipDetailReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\RipReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\RipSecondAmtReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\ServiceFeeReportBranch.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\SevOrgReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\SevReport.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\ZipCode.xlsx" />
+    <_ContentIncludedByDefault Remove="wwwroot\ReportTemplate\台新繳款匯入.txt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\UploadTemp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="obj\**" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,188 @@
+
+body{
+  height: 100%;
+  margin: 0 ;
+}
+
+main{
+  padding: 24px 0px 0px !important;
+}
+
+/* ken,設定字型start */
+.v-application {
+  font-family: DFKai-sb !important;
+  line-height: 0.8 !important;
+}
+
+h1 {
+  font-family:DFKai-sb !important;
+  margin-bottom: 6px;
+}
+
+/* v-card title */
+.headline{
+  font-family:DFKai-sb !important;/* ken,改不動 底層已經用!important */
+}
+/* ken,設定字型end */
+
+/* ken,設定字體大小start */
+.v-label{
+  font-size: 22px !important;
+  /* font-size: 18px !important; */
+}
+
+
+.v-input {
+  font-size: 18px;
+}
+.v-list-item--dense .v-list-item__title,
+.v-list-item--dense .v-list-item__subtitle,
+.v-list--dense .v-list-item .v-list-item__title,
+.v-list--dense .v-list-item .v-list-item__subtitle {
+  font-size: 18px !important;
+}
+.v-data-table--dense th {
+  font-size: 20px !important;
+  white-space: nowrap;
+  /* padding: 2px 10px 2px 10px;*/   /* 上 右 下 左 */ 
+}
+.v-data-table--dense td {
+  font-size: 20px !important;
+  /* padding: 2px 10px 2px 10px;*/   /* 上 右 下 左 */ 
+  height: 32px;
+  white-space: nowrap;
+}
+.v-btn.v-size--default {
+  font-size: 22px !important;
+}
+.v-tab {
+  font-size: 22px !important;
+}
+/* ken,設定字體大小end */
+
+
+.v-btn:not(.v-btn--round).v-size--default {
+  height: 32px;
+  min-width: 64px;
+  padding: 0 6px;
+}
+  
+.systemTitle {
+  font-family:DFKai-sb;
+  font-size:30px;
+}
+
+.v-list-item {
+  padding-left: 2px !important;
+}
+.v-card__title {
+  padding: 2px 2px 8px 5px !important;
+}
+
+.no-gutters > [class*=col-] {
+  margin-left:6px;
+  margin-right:6px;
+}
+
+/* ken,system menu start  */
+.menuList{
+  /* font-size:48px !important; */
+  background-color:transparent !important;
+  color:#000000 !important;
+  text-decoration: none;
+  width:100%;
+}
+.activeMenuList{
+  color:#000000 !important;
+  background-color:#D5F5E3;
+}
+.menuItem{
+  color:#000000 !important;
+  text-decoration: none;
+  width:100%;
+}
+.activeMenuItem{
+  color:#000000 !important;
+  background-color:#D5F5E3;
+}
+/* ken,system menu end */
+
+
+
+
+/* ken,active tab */
+.activeTab{
+  background-color:#EBF5FB;
+}
+
+
+
+/* ken,GG資料填寫區塊,設定背景色 */
+.areaRip{
+  background-color:#E5E8E8 !important;
+}
+
+/* ken,會員資料填寫區塊,設定背景色 */
+.areaMember1{
+  background-color:#EBF5FB;
+}
+
+.cell-overpay{
+  background-color:#E74C3C !important;
+}
+
+/* ken,所有輸入如果disabled,則下面可特別設定(transparent為透明) */
+input:disabled {
+  background-color:transparent !important;
+  color:#333399 !important;
+}
+textarea:disabled {
+  background-color:transparent !important;
+  color:#333399 !important;
+}
+.v-label--is-disabled {
+  background-color:transparent !important;
+  color:#333399 !important;
+}
+
+/* ken,設定背景圖(好像沒什麼差...預設就如此) */
+.bgPicture{
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-size: cover;
+}
+
+.container {
+  padding: 0px;
+  max-width: 99%;
+  width: 99%;
+}
+
+.v-card {
+  padding: 0px;
+  width: 99%;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.Message{
+  font-size: 22px;
+  color:#FF9966;
+}
+
+.ErrorMessage{
+  font-size: 22px;
+  color:red;
+}
+
+.text-center input{
+  text-align: center
+}
+
+.text-right input{
+  text-align: right
+}
+
+.text-right{
+  text-align: right
+}

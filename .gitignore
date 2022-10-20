@@ -1,0 +1,27 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/TldcFare/v16
+/.vs
+*.suo
+*.config
+
+
+/TldcFare/TldcFare.Dal/bin
+/TldcFare/TldcFare.Dal/obj
+/TldcFare/TldcFare.Batch.FareFund/bin/
+/TldcFare/TldcFare.Batch.FareFund/obj/
+/TldcFare/TldcFare/bin
+/TldcFare/TldcFare/obj
+
+/TldcFare/.vs
+/TldcFare/TldcFare/wwwroot/UploadTemp
+/TldcFare/TldcApp/package-lock.json
+
+
+/TldcFare/TldcFare/TldcFare.WebApi.csproj.user
+/TldcFare/TldcFare/file.bin
+
+
+

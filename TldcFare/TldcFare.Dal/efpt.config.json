@@ -1,0 +1,177 @@
+﻿{
+   "ContextClassName": "labourContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": null,
+   "ProjectRootNamespace": "TldcFare.Dal",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "HasPrimaryKey": true,
+         "Name": "achrecord"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "announces"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "bankinfo"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "branch"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "codemaster"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "codetable"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "execrecord"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "execsmallrecord"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "faredetail"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "farerpt"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "faresource"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "funcauthdetail"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "functable"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "iplock"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "logofchange"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "logofexception"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "logofhide"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "logofpromote"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "mem"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "memdetail"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "memripfund"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "oper"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "opergrprule"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "orglist"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "payrecord"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "payrecord_temp"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "payslip"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingfarefund"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingfaretype"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settinggroup"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingmonthlyfee"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingpromote"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingripfund"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "settingtldc"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "sev"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "sevdetail"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "sevtranrecord"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "zipcode"
+      }
+   ],
+   "UseDatabaseNames": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNodaTime": false,
+   "UseSpatial": false,
+   "UseStoredProcedures": false
+}

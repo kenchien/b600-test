@@ -1,0 +1,45 @@
+FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build
+RUN apt-get update && apt-get install -y apt-utils libgdiplus libc6-dev
+RUN apt-get update -y && apt-get install libfontconfig -y
+RUN apt-get update -y && apt-get install fontconfig -y
+
+#RUN apt-get install cabextract fonts-linuxlibertine ttf-mscorefonts-installer
+COPY msjh.ttf /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/msjh.ttf
+COPY mingliu.ttc /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/mingliu.ttc
+COPY mingliub.ttc /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/mingliub.ttc
+
+COPY TW-Kai-98_1.ttf /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/TW-Kai-98_1.ttf
+COPY TW-Kai-Plus-98_1.ttf /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/TW-Kai-Plus-98_1.ttf
+COPY TW-Kai-Ext-B-98_1.ttf /usr/share/fonts/truetype/
+RUN chmod 644 /usr/share/fonts/truetype/TW-Kai-Ext-B-98_1.ttf
+RUN fc-cache -vf
+RUN fc-list :lang=zh
+
+WORKDIR app
+EXPOSE 5000
+ENV ASPNETCORE_URLS=http://+:5000 LANG=C.UTF-8 LC_ALL=C.UTF-8
+
+WORKDIR /src
+COPY . .
+RUN dotnet restore TldcFare/TldcFare.WebApi.csproj
+
+COPY . ./
+WORKDIR /src/TldcFare
+RUN dotnet publish TldcFare.WebApi.csproj -c Release -o /app
+
+FROM build AS runtime
+WORKDIR /app
+COPY --from=build /app .
+
+WORKDIR /app/wwwroot
+#RUN mkdir UploadTemp
+
+WORKDIR /app
+
+ENTRYPOINT ["dotnet", "TldcFare.WebApi.dll", "--server.urls", "http://localhost:5000"]
+
