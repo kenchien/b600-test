@@ -404,7 +404,18 @@ const router = new Router({
           meta: { requiresAuth: true },
           component: () => import('./views/Report/NormalMemReport.vue')
         },
-
+        {
+          path: '/Report/kentest',//3-21 kentest
+          name: 'kentest',
+          meta: { requiresAuth: true },
+          component: () => import('./views/Report/kentest.vue')
+        },
+        {
+          path: '/Report/kentest2',//3-22 kentest2
+          name: 'kentest2',
+          meta: { requiresAuth: true },
+          component: () => import('./views/Report/kentest2.vue')
+        },
       ]
     },
 

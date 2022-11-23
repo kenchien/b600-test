@@ -1,3 +1,4 @@
+using log4net;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace TldcFare.WebApi.Controllers
         private readonly AdminService _admin;
         private readonly IRepository<Execsmallrecord> _execSmallRecord;
         private readonly JwtHelper _jwt;
+        private readonly static ILog _log = LogManager.GetLogger(typeof(Program));
 
         public AuthController(OperService operService,
                                 AdminService admin,
@@ -137,6 +139,7 @@ namespace TldcFare.WebApi.Controllers
         {
             string ErrorMessage = "";//ken,debug專用
             var result = new ResultModel<LoginModel>();
+            _log.Error($@"login ken test (id={postData.operAccount})");
 
             try
             {

@@ -3826,5 +3826,211 @@ where 1=1
       }
 
 
+
+      /// <summary>
+      /// 3-21 kentest
+      /// </summary>
+      /// <returns></returns>
+      public DataTable GetKenTest(SearchItemModel sim) {
+         try {
+            //0.check
+            if (string.IsNullOrEmpty(sim.searchText)
+               && string.IsNullOrEmpty(sim.grpId)
+               && string.IsNullOrEmpty(sim.branchId)
+               && string.IsNullOrEmpty(sim.payStartDate)
+               && string.IsNullOrEmpty(sim.payEndDate)
+               && string.IsNullOrEmpty(sim.payYm)
+               && string.IsNullOrEmpty(sim.sender)
+               && string.IsNullOrEmpty(sim.payKind)
+               && string.IsNullOrEmpty(sim.paySource)
+               && string.IsNullOrEmpty(sim.payType)
+               && string.IsNullOrEmpty(sim.startDate)
+               && string.IsNullOrEmpty(sim.endDate))
+               throw new CustomException("請輸入至少一個查詢條件");
+
+            string sql = $@"
+select 0 into @seq;
+
+with main as (
+    select concat(substr(p.payYm,1,4),'/',substr(p.payYm,5,2)) as payYm,
+    date_format(p.paydate,'%Y/%m/%d') as paydate,
+    p.payId,
+    m.branchid,
+    m.memname,
+    m.memid,
+    ck.description as payKindDesc,
+    ct.description as payTypeDesc,
+    round(p.payamt,0) as payAmt,
+    cs.description as paySourceDesc,
+    if(p.isCalFare='1','Y','N') as '發放',
+    p.IssueYm2 as '發放月份',
+    p.paymemo
+    from payrecord p
+    join memsev m on m.memid=p.memid
+    left join codetable ck on ck.CodeMasterKey='PayKind' and ck.CodeValue=p.PayKind
+    left join codetable ct on ct.CodeMasterKey='PayType' and ct.CodeValue=p.PayType
+    left join codetable cs on cs.CodeMasterKey='PaySource' and cs.CodeValue=p.PaySource
+    where 1=1 
+";
+
+            if (!string.IsNullOrEmpty(sim.searchText))
+               sql += $" and (m.memname = @search or m.memIdno = @search or m.memid = @search) ";
+
+            if (!string.IsNullOrEmpty(sim.grpId))
+               sql += @" and getmergegrpid(m.grpId) = @grpId ";
+            if (!string.IsNullOrEmpty(sim.branchId))
+               sql += @" and m.branchId = @branchId ";
+            if (!string.IsNullOrEmpty(sim.payStartDate))
+               sql += @" and p.paydate >= @payStartDate ";
+            if (!string.IsNullOrEmpty(sim.payEndDate))
+               sql += @" and p.paydate <= @payEndDate ";
+
+            if (!string.IsNullOrEmpty(sim.payYm))
+               sql += @" and p.payYm = @payYm ";
+            if (!string.IsNullOrEmpty(sim.sender)) //KEY人員(但如果該筆有異動,以最後異動人員為主)
+               sql += @" and ( p.sender = @sender and p.paysource not in ('05','08') )";
+
+            if (!string.IsNullOrEmpty(sim.payKind)) {
+               if (sim.payKind == "111")//新件(含文書)
+                  sql += @" and p.paykind in ('1','11') ";
+               else
+                  sql += @" and p.paykind = @payKind ";
+            }
+            if (!string.IsNullOrEmpty(sim.paySource))
+               sql += @" and p.paySource = @paySource ";
+            if (!string.IsNullOrEmpty(sim.payType))
+               sql += @" and p.payType = @payType ";
+
+            if (!string.IsNullOrEmpty(sim.startDate))
+               sql += @" and p.createdate >= @startDate ";
+            if (!string.IsNullOrEmpty(sim.endDate))
+               sql += @" and p.createdate <= @endDate ";
+
+            sql += @"     
+    order by m.memidno,m.grpid,p.payDate desc
+)
+select @seq:=@seq+1 as seq,main.* from main limit 50001";
+
+            return _payrecordRepository.QueryToDataTable(sql, new {
+               search = sim.searchText,
+               sim.grpId,
+               sim.branchId,
+               sim.payStartDate,
+               payEndDate = sim.payEndDate + " 23:59:59",
+               payYm = sim.payYm.NoSplit(),
+               sim.sender,
+               sim.payKind,
+               sim.payType,
+               sim.paySource,
+               sim.startDate,
+               endDate = sim.endDate + " 23:59:59"
+            }, 50000, true);
+         } catch {
+            throw;
+         }
+      }
+
+            /// <summary>
+      /// 3-21 kentest
+      /// </summary>
+      /// <returns></returns>
+      public DataTable GetKenTest2(SearchItemModel sim) {
+         try {
+            //0.check
+            if (string.IsNullOrEmpty(sim.searchText)
+               && string.IsNullOrEmpty(sim.grpId)
+               && string.IsNullOrEmpty(sim.branchId)
+               && string.IsNullOrEmpty(sim.payStartDate)
+               && string.IsNullOrEmpty(sim.payEndDate)
+               && string.IsNullOrEmpty(sim.payYm)
+               && string.IsNullOrEmpty(sim.sender)
+               && string.IsNullOrEmpty(sim.payKind)
+               && string.IsNullOrEmpty(sim.paySource)
+               && string.IsNullOrEmpty(sim.payType)
+               && string.IsNullOrEmpty(sim.startDate)
+               && string.IsNullOrEmpty(sim.endDate))
+               throw new CustomException("請輸入至少一個查詢條件");
+
+            string sql = $@"
+select 0 into @seq;
+
+with main as (
+    select concat(substr(p.payYm,1,4),'/',substr(p.payYm,5,2)) as payYm,
+    date_format(p.paydate,'%Y/%m/%d') as paydate,
+    p.payId,
+    m.branchid,
+    m.memname,
+    m.memid,
+    ck.description as payKindDesc,
+    ct.description as payTypeDesc,
+    round(p.payamt,0) as payAmt,
+    cs.description as paySourceDesc,
+    if(p.isCalFare='1','Y','N') as '發放',
+    p.IssueYm2 as '發放月份',
+    p.paymemo
+    from payrecord p
+    join memsev m on m.memid=p.memid
+    left join codetable ck on ck.CodeMasterKey='PayKind' and ck.CodeValue=p.PayKind
+    left join codetable ct on ct.CodeMasterKey='PayType' and ct.CodeValue=p.PayType
+    left join codetable cs on cs.CodeMasterKey='PaySource' and cs.CodeValue=p.PaySource
+    where 1=1 
+";
+
+            if (!string.IsNullOrEmpty(sim.searchText))
+               sql += $" and (m.memname = @search or m.memIdno = @search or m.memid = @search) ";
+
+            if (!string.IsNullOrEmpty(sim.grpId))
+               sql += @" and getmergegrpid(m.grpId) = @grpId ";
+            if (!string.IsNullOrEmpty(sim.branchId))
+               sql += @" and m.branchId = @branchId ";
+            if (!string.IsNullOrEmpty(sim.payStartDate))
+               sql += @" and p.paydate >= @payStartDate ";
+            if (!string.IsNullOrEmpty(sim.payEndDate))
+               sql += @" and p.paydate <= @payEndDate ";
+
+            if (!string.IsNullOrEmpty(sim.payYm))
+               sql += @" and p.payYm = @payYm ";
+            if (!string.IsNullOrEmpty(sim.sender)) //KEY人員(但如果該筆有異動,以最後異動人員為主)
+               sql += @" and ( p.sender = @sender and p.paysource not in ('05','08') )";
+
+            if (!string.IsNullOrEmpty(sim.payKind)) {
+               if (sim.payKind == "111")//新件(含文書)
+                  sql += @" and p.paykind in ('1','11') ";
+               else
+                  sql += @" and p.paykind = @payKind ";
+            }
+            if (!string.IsNullOrEmpty(sim.paySource))
+               sql += @" and p.paySource = @paySource ";
+            if (!string.IsNullOrEmpty(sim.payType))
+               sql += @" and p.payType = @payType ";
+
+            if (!string.IsNullOrEmpty(sim.startDate))
+               sql += @" and p.createdate >= @startDate ";
+            if (!string.IsNullOrEmpty(sim.endDate))
+               sql += @" and p.createdate <= @endDate ";
+
+            sql += @"     
+    order by m.memidno,m.grpid,p.payDate desc
+)
+select @seq:=@seq+1 as seq,main.* from main limit 50001";
+
+            return _payrecordRepository.QueryToDataTable(sql, new {
+               search = sim.searchText,
+               sim.grpId,
+               sim.branchId,
+               sim.payStartDate,
+               payEndDate = sim.payEndDate + " 23:59:59",
+               payYm = sim.payYm.NoSplit(),
+               sim.sender,
+               sim.payKind,
+               sim.payType,
+               sim.paySource,
+               sim.startDate,
+               endDate = sim.endDate + " 23:59:59"
+            }, 50000, true);
+         } catch {
+            throw;
+         }
+      }
    }
 }
