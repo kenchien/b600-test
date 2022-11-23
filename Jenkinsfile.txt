@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+
+    parameters{
+        string(name: 'tldc_dev', defaultValue: '52.194.224.58', description: 'Staging Server')
+        string(name: 'tldc_prod', defaultValue: '13.230.239.11', description: 'Production Server')
+    }
+
+    triggers {
+         pollSCM('* * * * *')
+    }
+
+    stages{
+        stage('Build'){
+            steps {
+                sh 'mvn clean package'
+            }
+            post {
+                success {
+                    echo '開始封裝執行檔...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+        }
+
+        stage ('Deployments'){
+            parallel{
+                stage ('Deploy to Staging'){
+                    steps {
+                        sh "scp -i /Users/gaoyan/Documents/SunnyDemo/dev/tldc-demo.pem.txt **/target/*.war ec2-user@${params.tldc_dev}:/var/lib/tldc8/webapps"
+                    }
+                }
+
+                stage ("Deploy to Production"){
+                    steps {
+                        sh "scp -i /Users/gaoyan/Documents/SunnyDemo/dev/tldc-demo.pem.txt **/target/*.war ec2-user@${params.tldc_prod}:/var/lib/tldc8/webapps"
+                    }
+                }
+            }
+        }
+    }
+}
